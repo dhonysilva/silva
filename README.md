@@ -18,14 +18,14 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser wh
 In order to provide a list of different media types, I've created a LiveView CRUD called Medias.
 
 <div align="center">
-  <img src="./priv/static/images/all_media_list.png" alt="Website snapshot">
+  <img src="./priv/static/images/all_media_list.png" alt="Listing all Medias" width="500px">
 </div>
 
 
 Here is where it is possible to insert new medias and assign it to a specific type, being video, text or picture.
 
 <div align="center">
-  <img src="./priv/static/images/new_media.png" alt="Video content type">
+  <img src="./priv/static/images/new_media.png" alt="New Media screen" width="500px">
 </div>
 
 The `medias` schema is described below where it is highlighted the Enum `media_type`:
@@ -50,23 +50,25 @@ Here we have an example for each media type.
 The `DynamicModalComponent` receives the `:video` type parameter and based on it render the embedded YouTube video.
 
 <div align="center">
-  <img src="./priv/static/images/media_type_video.png" alt="Video content type">
+  <img src="./priv/static/images/media_type_video.png" alt="Video content type" width="500px">
 </div>
+
 
 ### Picture media type
 
 The `DynamicModalComponent` receives the `:picture` type parameter and based on it render the embedded Flickr photograph.
 
 <div align="center">
-  <img src="./priv/static/images/media_type_picture.png" alt="Picture content type">
+  <img src="./priv/static/images/media_type_picture.png" alt="Picture content type" width="500px">
 </div>
+
 
 ### Text media type
 
 When the `DynamicModalComponent` receives the `:text` type parameter it just present the text content.
 
 <div align="center">
-  <img src="./priv/static/images/media_type_text.png" alt="Text content type">
+  <img src="./priv/static/images/media_type_text.png" alt="Text content type" width="500px">
 </div>
 
 There's an underlying icon on the right-top corner for each media type preseted when we open the Modal screen.
@@ -80,7 +82,7 @@ This is screen can be accessed on [`localhost:4000/subjects`](http://localhost:4
 Once we click on a card, it shows up the Model screen.
 
 <div align="center">
-  <img src="./priv/static/images/different_page.png" alt="Website snapshot">
+  <img src="./priv/static/images/different_page.png" alt="Subjects page - different location" width="500px">
 </div>
 
 
