@@ -1,0 +1,64 @@
+<.header>
+  Medias
+  <:actions>
+    <.link patch={~p"/medias/new"}>
+      <.button><.icon name="hero-plus-circle" class="w-5 h-5" /> New Media</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="medias"
+  rows={@streams.medias}
+  row_click={fn {_id, media} -> JS.navigate(~p"/medias/#{media}") end}
+>
+  <:col :let={{_id, media}} label="Name"><%= media.name %></:col>
+  <:col :let={{_id, media}} label="Content"><%= media.content %></:col>
+  <:col :let={{_id, media}} label="Media type">
+    <%= case media.media_type do %>
+      <% :video -> %>
+        <.icon name="hero-video-camera" class="w-5 h-5" />
+      <% :picture -> %>
+        <.icon name="hero-photo" class="w-5 h-5" />
+      <% :text -> %>
+        <.icon name="hero-document-text" class="w-5 h-5" />
+    <% end %>
+  </:col>
+  
+  <:action :let={{_id, media}}>
+    <div class="sr-only">
+      <.link patch={~p"/medias/#{media}"}>Show</.link>
+    </div>
+    <.link patch={~p"/medias/#{media}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, media}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: media.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="media-modal" show on_cancel={JS.patch(~p"/medias")}>
+  <.live_component
+    module={SilvaWeb.MediaLive.FormComponent}
+    id={@media.id || :new}
+    title={@page_title}
+    action={@live_action}
+    media={@media}
+    patch={~p"/medias"}
+  />
+</.modal>
+
+<.modal :if={@live_action in [:show]} id="dynamic-modal" show on_cancel={JS.patch(~p"/medias")}>
+  <.live_component
+    module={DynamicModalComponent}
+    id={@media.id || :show}
+    title={@page_title}
+    action={@live_action}
+    media={@media}
+    type={@media.media_type}
+  />
+</.modal>
