@@ -9,6 +9,12 @@ To start your Phoenix server:
   * Start Phoenix endpoint with `mix phx.server`
   * Create the SQLite running the `mix phx.migrate`
 
+Run the command below to feed the database with some Medias and Subjects data:
+
+`mix run priv/repo/seeds.exs`
+
+It'll create 3 examples rows on Medias and on Subjects.
+
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser where you can see the two LiveViews developed for this exercise:
   * [`localhost:4000/medias`](http://localhost:4000/medias) - The Media screen where we might register new medias based on its type (texts, videos and pictures). Once registered, we might open the Modal screen and see each content type being handled by the component.
   * [`localhost:4000/subjects`](http://localhost:4000/subjects) - To see the dynamic Live Component included on a different page.
